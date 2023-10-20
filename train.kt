@@ -6,18 +6,21 @@ fun main(args: Array<String>) {
         "Санкт-Петербург", "Минск", "Мурманск", "Хельсинки", "Хандыга"
     )
 
+
+
     class Train(val totalPassangersAmount: Int) {
         var vagons = arrayOf<Int>() //пустой массив интегеров (тут будет число вместительности)
         var totalCapacity = 0
 
         fun GetVagons(){
-            while (totalCapacity <= totalPassangersAmount) { //accomplishing untill totalCapacity BIGGER than totalPassangersAmount
+            while (totalCapacity <= totalPassangersAmount) {
                 var vagon = (Math.random() * 21).toInt()+5  //сколько людей туда поместятся
                 totalCapacity += vagon
                 vagons = vagons.plus(vagon)
             }
         }
     }
+
 
         class Route() {
             fun GetCity(otherCity: String): String{
@@ -57,7 +60,22 @@ fun main(args: Array<String>) {
                 return result
             }
         }
+        
 
-        var route1 = Route()
-        route1.printRoute()
+
+        fun creationProcess(){
+            var choice = 1
+            while (choice == 1) {
+                println("нажмите 1 чтобы составить поезд, или 0 чтобы закончить: ")
+                choice = readLine()?.toIntOrNull() ?: 0
+                if (choice == 1){
+                    var route1 = Route()
+                    route1.printRoute()
+                } else {
+                    println("до свидания")
+                }
+            }
+        }
+
+        creationProcess()
 }
